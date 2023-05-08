@@ -1,7 +1,26 @@
-
+{{!-- 
+{{#each items}}
  <div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">{{title}}</h5>
-        <p class="card-text">Artist name:: {{director}}</p>
+        <h5 class="card-title">{{this.name}}</h5>
+        <img src="{{this.images[0].url}}" alt="artist picture"/>
+        <a href="/albums">View albums</a>
     </div>
 </div>
+{{/each}} --}}
+
+<h1>Search Results</h1>
+
+{{#if items.length}}
+  <ul>
+    {{#each items}}
+      <li>
+        <img src="{{this.images.[0].url}}" alt="{{this.name}}">
+        <h2>{{this.name}}</h2>
+<a href="/albums/{{this.id}}" class="btn btn-success">View Albums</a>
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No artists found</p>
+{{/if}}
